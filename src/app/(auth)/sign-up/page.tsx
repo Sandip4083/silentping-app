@@ -41,10 +41,14 @@ export default function SignUpPage() {
                 body: JSON.stringify(data)
             });
             
-            const responseData = await response.json();
-            
-            if (!response.ok) {
-                throw new Error(responseData.message || 'Error creating account. Please try again.');
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                const responseData = await response.json();
+                if (!response.ok) {
+                    throw new Error(responseData.message || 'Error creating account.');
+                }
+            } else {
+                throw new Error('Database disconnected! Please check Vercel Environment variables and redeploy.');
             }
             
             toast.success('Registration successful. You can now login.')
