@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SilentPing
 
-## Getting Started
+**SilentPing** is a fast and secure anonymous feedback platform built with Next.js. It allows users to register, receive a unique link, and accept anonymous messages smoothly and securely. It also supports shutting down the message acceptance temporarily.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Anonymous Messaging**: Users can send messages to a registered user without revealing their identity.
+- **Authentication**: Secure user signup, login, and robust session management using NextAuth.js.
+- **Email Verification**: User accounts are secured with a mandatory email verification process powered by Resend API.
+- **Message Management**: Users can turn message acceptance on or off at their convenience.
+- **Dashboard**: A clean and responsive dashboard to view, manage, and delete the received messages.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS, React Email Components
+- **Form Management:** React Hook Form & Zod
+- **Database:** MongoDB & Mongoose
+- **Authentication:** NextAuth.js
+- **Email Service:** Resend
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+Make sure you have [Node.js](https://nodejs.org/en) installed on your machine.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository** (if applicable) or navigate to the project directory:
+   ```bash
+   cd silentping
+   ```
 
-## Deploy on Vercel
+2. **Install dependencies**:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Set up environment variables**:
+   Create a `.env` file in the root directory and add the following keys. Make sure to replace values with your own keys:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```env
+   MONGODB_URI="mongodb://localhost:27017/silentping" 
+   RESEND_API_KEY="your-resend-api-key"
+   NEXTAUTH_SECRET="your-nextauth-secret-key"
+   NEXTAUTH_URL="http://localhost:3000"
+   ```
+
+4. **Run the development server**:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📁 Core Structure Insight
+
+- `src/app/`: Next.js frontend pages and core routing.
+- `src/app/api/`: API endpoints logic (signup, messaging, authentication logic).
+- `src/model/`: Mongoose schemas outlining `User` and nested `Message` models.
+- `src/schemas/`: Zod validation instances for clean server and client validation.
+- `src/helpers/`: Contains utility code including email verification functions layout.
+- `emails/`: Custom email designs processed explicitly via React Email.
+
+## 🛡️ Useful Resources
+
+To delve deeper into the dependencies scaling this project, rely on:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [NextAuth.js Guidelines](https://next-auth.js.org/getting-started/introduction)
+- [Mongoose Docs](https://mongoosejs.com/docs/)
+- [Zod Handbook](https://zod.dev/)
+- [Resend Email Implementation](https://resend.com/docs/send-with-nextjs)
+
+## 📌 Deployment
+
+The easiest structure to deploy Next.js apps is using the [Vercel Platform](https://vercel.com/new). Don't forget to push your environment variables directly to the service settings to allow API configurations mapping. Check the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for comprehensive steps.
